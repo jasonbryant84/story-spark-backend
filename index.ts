@@ -21,7 +21,11 @@ import { createSession, parseStory, downloadImage } from './utils'
 // Middleware
 app.use(express.json())
 
-const allowedOrigins = [`${FRONTEND_URL}:${FRONTEND_PORT}`, 'https://story-spark-frontend.vercel.app']
+const allowedOrigins = [
+    `${FRONTEND_URL}:${FRONTEND_PORT}`,
+    'https://story-spark-frontend.vercel.app',
+    'https://story-spark-frontend-138673a9e35d.herokuapp.com'
+]
 app.use(cors({
     origin: (origin: string, callback: Function) => {
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
