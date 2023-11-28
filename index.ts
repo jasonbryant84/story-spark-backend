@@ -34,11 +34,11 @@ app.use(cors({
 
 app.use(express.static('public'))
 
-app.get('/healthcheck', async (req: express.Request, res: express.Response) => {
+app.get('/healthcheck', async (req: any, res: any) => {
     res.json({ success: true })
 })
 
-app.post('/api/create-session', cors(), async (req: express.Request, res: express.Response) => {
+app.post('/api/create-session', cors(), async (req: any, res: any) => {
     const sessionToken = await createSession()
     res.json({ sessionToken })
 })
@@ -47,7 +47,7 @@ interface CreateStoryRequestType {
     prompt: string;
     user: any;
 }
-app.post('/api/create-story', cors(), async (req: express.Request, res: express.Response) => {
+app.post('/api/create-story', cors(), async (req: any, res: any) => {
     const { prompt, user }: CreateStoryRequestType = req.body;
 
     // Ensure we have a valid WebSocket
@@ -131,7 +131,7 @@ const server = app.listen(port, () => {
 
 const wss = new WebSocket.Server({ server })
 
-wss.on('connection', (ws: any, req: express.Request) => {
+wss.on('connection', (ws: any, req: any) => {
     const urlParams = new URLSearchParams(req.url)
     const token =  urlParams.get('/?token') // passing token in URL
     const username =  urlParams.get('username')
