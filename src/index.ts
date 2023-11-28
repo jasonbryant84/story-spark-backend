@@ -16,7 +16,7 @@ const port = process.env.PORT || 3001
 const wsConnections = new Map()
 
 // Utils
-import { createSession, parseStory, downloadImage } from './utils'
+import { createSession, parseStory, downloadImage } from '../utils'
 
 // Middleware
 app.use(express.json())
